@@ -24,26 +24,18 @@ qualquer tradução correspondente.
 
 ## Escolhas da equipe (conforme proposta)
 
-| Item | Escolha |
-|---|---|
-| API JSON | wger |
+| Item                      | Escolha                                                                                                                                         |
+| ------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| API JSON                  | wger                                                                                                                                            |
 | Hook/funcionalidade React | `useReducer` (principal), complementado por `createPortal` no modal de detalhes e `useMemo` para cruzar IDs de categorias/músculos/equipamentos |
-| Biblioteca externa | `react-hook-form` |
+| Biblioteca externa        | `react-hook-form`                                                                                                                               |
 
 ## Estrutura (conforme exigido pela proposta)
 
 ```
 src/
 ├── components/
-│   ├── Header.jsx          # cabeçalho + contador de resultados
-│   ├── SearchForm.jsx      # form principal + FormProvider do react-hook-form
-│   ├── Filters.jsx         # selects de categoria, músculo e equipamento
-│   ├── ExerciseList.jsx    # lista os resultados
-│   ├── ExerciseCard.jsx    # card clicável de cada exercício
-│   └── ExerciseModal.jsx   # modal de detalhes (via createPortal)
 └── contexts/
-    ├── WorkoutContext.js   # contexto (puro)
-    └── WorkoutProvider.jsx # provider + reducer + fetch dos filtros
 ```
 
 ## Como rodar
@@ -58,4 +50,4 @@ npm run lint        # verificação de lint
 
 ## Deploy
 
-URL de produção: `https://luiispaulo.github.io/Brutal-Fit/`
+URL de produção: `https://victorhsmessias.github.io/brutal-fit/`
