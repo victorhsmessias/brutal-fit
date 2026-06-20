@@ -1,4 +1,4 @@
-import { useContext, useEffect, useMemo } from "react";
+import { useContext, useEffect, useMemo, useCallback } from "react";
 import { createPortal } from "react-dom";
 import DOMPurify from "dompurify";
 import { WorkoutContext } from "../contexts/WorkoutContext";
@@ -7,7 +7,10 @@ export default function ExerciseModal() {
   const { state, dispatch } = useContext(WorkoutContext);
   const { selectedExercise } = state;
 
-  const close = () => dispatch({ type: "CLOSE_DETAILS" });
+  const close = useCallback(
+    () => dispatch({ type: "CLOSE_DETAILS" }),
+    [dispatch]
+  );
 
   useEffect(() => {
     if (!selectedExercise) return;
@@ -21,16 +24,15 @@ export default function ExerciseModal() {
       document.removeEventListener("keydown", onKey);
       document.body.style.overflow = prevOverflow;
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedExercise]);
+  }, [selectedExercise, close]);
 
   const { categoryName, muscleNames, equipmentNames, safeDescription } =
     useMemo(() => {
       if (!selectedExercise) return {};
       return {
-        categoryName: selectedExercise.category?.name,
-        muscleNames: (selectedExercise.muscles || []).map((m) => m.name),
-        equipmentNames: (selectedExercise.equipment || []).map((e) => e.name),
+        categoryName: selectedExercise.category || null,
+        muscleNames: selectedExercise.muscles || [],
+        equipmentNames: selectedExercise.equipment || [],
         safeDescription: DOMPurify.sanitize(
           selectedExercise.description || "<p>Sem descrição disponível.</p>",
         ),
@@ -65,13 +67,13 @@ export default function ExerciseModal() {
               <dd>{categoryName}</dd>
             </>
           )}
-          {muscleNames?.length > 0 && (
+          {muscleNames.length > 0 && (
             <>
               <dt>Músculos</dt>
               <dd>{muscleNames.join(", ")}</dd>
             </>
           )}
-          {equipmentNames?.length > 0 && (
+          {equipmentNames.length > 0 && (
             <>
               <dt>Equipamento</dt>
               <dd>{equipmentNames.join(", ")}</dd>

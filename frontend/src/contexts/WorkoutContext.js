@@ -52,27 +52,6 @@ const MUSCLE_PT = {
   "Triceps brachii": "Tríceps",
 };
 
-export function translateCategory(c) {
-  if (!c) return c;
-  return { ...c, name: CATEGORY_PT[c.name] || c.name };
-}
-
-export function translateEquipment(e) {
-  if (!e) return e;
-  return { ...e, name: EQUIPMENT_PT[e.name] || e.name };
-}
-
-export function translateMuscle(m) {
-  if (!m) return m;
-  const key = m.name_en || m.name;
-  return { ...m, name: MUSCLE_PT[key] || key };
-}
-
-export function translateExerciseRefs(ex) {
-  return {
-    ...ex,
-    category: translateCategory(ex.category),
-    muscles: (ex.muscles || []).map(translateMuscle),
-    equipment: (ex.equipment || []).map(translateEquipment),
-  };
-}
+export const CATEGORIES = Object.values(CATEGORY_PT).sort();
+export const MUSCLES = Object.values(MUSCLE_PT).sort();
+export const EQUIPMENT = Object.values(EQUIPMENT_PT).sort();

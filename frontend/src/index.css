@@ -91,9 +91,160 @@ select:focus {
   padding: 32px 20px;
 }
 
+/* ── Login ── */
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.login-form {
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--accent);
+  border-radius: 8px;
+  padding: 32px;
+  width: 100%;
+  max-width: 380px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.login-form h1 {
+  font-size: 28px;
+  letter-spacing: -0.5px;
+  color: var(--accent);
+  margin: 0;
+}
+
+.login-subtitle {
+  color: var(--text-muted);
+  font-size: 14px;
+  margin: -12px 0 0;
+}
+
+/* ── Form groups shared ── */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.form-group textarea {
+  font: inherit;
+  padding: 10px 12px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--bg-elev);
+  color: var(--text);
+  resize: vertical;
+}
+
+.form-group textarea:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+.form-group select[multiple] {
+  height: auto;
+}
+
+.field-error {
+  color: var(--danger);
+  font-size: 13px;
+  margin: 0;
+}
+
+.hint {
+  font-weight: 400;
+  font-size: 11px;
+  color: var(--text-muted);
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+/* ── Insert exercise form ── */
+.exercise-form {
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.exercise-form h2 {
+  font-size: 20px;
+}
+
+.form-row {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.form-row .form-group {
+  flex: 1 1 200px;
+}
+
+.form-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.success-msg {
+  color: var(--success);
+  font-weight: 600;
+  margin: 0;
+}
+
+/* ── Nav tabs ── */
+.nav-tabs {
+  display: flex;
+  gap: 4px;
+  border-bottom: 2px solid var(--border);
+  margin-bottom: 20px;
+}
+
+.nav-tabs button {
+  background: transparent;
+  color: var(--text-muted);
+  border-radius: 6px 6px 0 0;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+}
+
+.nav-tabs button:hover:not(:disabled) {
+  background: var(--bg-elev);
+  color: var(--text);
+}
+
+.nav-tabs button.active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+  background: transparent;
+}
+
+/* ── Header ── */
 .app-header {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
   gap: 12px;
   border-bottom: 2px solid var(--accent);
@@ -118,6 +269,23 @@ select:focus {
 .app-header .tagline {
   color: var(--text-muted);
   font-size: 14px;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.user-email {
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+.logout-btn {
+  font-size: 13px;
+  padding: 6px 12px;
 }
 
 .result-badge {
